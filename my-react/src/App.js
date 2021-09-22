@@ -16,25 +16,22 @@ class App extends Component {
     lathatosag: true
   }
 
-  nameChangeHandler = (ujNev) => {
-    console.log(this.state);
-    this.setState({
-      persons: [
-        { name: ujNev, age: 26 },
-        { name: 'János', age: 34 },
-        { name: 'Kocka Károly', age: 20 }
-      ]
+  nevValtozasKezelo = (event, id) => {
+    const szemelyIndex = this.state.persons.findIndex(aktSzemely => {
+      return aktSzemely.id === id;
     });
-    console.log(this.state);
-  }
+    const szemely = {
+      ...this.state.persons[szemelyIndex]
+    };
 
-  nevValtozasKezelo = (event) => {
+    // ES5: const szemely = Object.assign({}, this.state.persons[szemelyIndex]);
+    
+    szemely.name = event.target.value;
+    const szemelyek = [...this.state.persons];
+    szemelyek[szemelyIndex] = szemely;
+
     this.setState({
-      persons: [
-        { name: event.target.value, age: 26 },
-        { name: event.target.value, age: 34 },
-        { name: event.target.value, age: 20 }
-      ]
+      persons: szemelyek
     });
   }
 
@@ -72,6 +69,7 @@ class App extends Component {
                   name={person.name} 
                   age={person.age} 
                   delete={() => this.personDeleteHandler(index)} 
+                  change={(event) => this.nevValtozasKezelo(event, person.id)}
                 />
               )
             })
