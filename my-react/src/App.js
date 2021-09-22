@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 //import React, {useState} from 'react';
 import Person from './Person/Person'; 
+import Awesome from './Awesome/Awesome';
 import './App.css';
 
 
@@ -99,6 +100,7 @@ class App extends Component {
         
         {persons}
 
+        <Awesome init="1"/>
       </div>
     );
     
