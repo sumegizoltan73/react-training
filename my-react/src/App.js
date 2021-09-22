@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 //import React, {useState} from 'react';
 import Person from './Person/Person'; 
 import './App.css';
+import person from './Person/Person';
 
 
 class App extends Component {
@@ -42,6 +43,12 @@ class App extends Component {
     this.setState({ lathatosag: !lathato });
   }
 
+  personDeleteHandler = (personIndex) => {
+    const persons = this.state.persons;
+    persons.splice(personIndex, 1);
+    this.setState({persons: persons});
+  }
+
   render() {
     const stilus = {
       backgroundColor: '#efefef',
@@ -57,9 +64,9 @@ class App extends Component {
       persons = (
         <div>
           {
-            this.state.persons.map(person => {
+            this.state.persons.map((person, index) => {
               return(
-                <Person name={person.name} age={person.age} />
+                <Person name={person.name} age={person.age} delete={() => this.personDeleteHandler(index)} />
               )
             })
           }
