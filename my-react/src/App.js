@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 //import React, {useState} from 'react';
 import Person from './Person/Person'; 
 import './App.css';
-import person from './Person/Person';
 
 
 class App extends Component {
@@ -49,11 +48,12 @@ class App extends Component {
 
   render() {
     const stilus = {
-      backgroundColor: '#efefef',
+      backgroundColor: 'green',
       font: 'inherit',
-      border: '2px dashed red',
+      border: '2px solid gray',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      color: 'white'
     };
     
     let persons = null;
@@ -77,6 +77,8 @@ class App extends Component {
           
         </div>
       );
+
+      stilus.backgroundColor = 'red';
     }
 
     return (
