@@ -11,12 +11,23 @@ class App extends Component {
     ]
   }
 
+  nameChangeHandler = () => {
+    this.setState({
+      persons: [
+        { name: 'Hűbele Balázs', age: 26 },
+        { name: 'János', age: 34 },
+        { name: 'Kocka Károly', age: 20 }
+      ]
+    });
+  }
+
   render() {
     
     return (
       <div className="App">
         <h1>Sziasztok!</h1>
         <p>Bekezdés</p>
+        <button onClick={this.nameChangeHandler}>Nevet módosít</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age}>Hobbim az informatika!</Person>
