@@ -37,12 +37,19 @@ class App extends Component {
   }
 
   render() {
+    const stilus = {
+      backgroundColor: '#efefef',
+      font: 'inherit',
+      border: '2px dashed red',
+      padding: '8px',
+      cursor: 'pointer'
+    };
     
     return (
       <div className="App">
         <h1>Sziasztok!</h1>
         <p>Bekezdés</p>
-        <button onClick={this.nameChangeHandler.bind(this, 'Teszt')}>Nevet módosít</button>
+        <button style={stilus} onClick={this.nameChangeHandler.bind(this, 'Teszt')}>Nevet módosít</button>
         <Person 
           name={this.state.persons[0].name} 
           age={this.state.persons[0].age}
