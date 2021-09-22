@@ -51,12 +51,10 @@ class App extends Component {
       cursor: 'pointer'
     };
     
-    return (
-      <div className="App">
-        <h1>Sziasztok!</h1>
-        <p>Bekezdés</p>
-        <button style={stilus} onClick={this.kapcsolo}>Kapcsoló</button>
-        { this.state.lathatosag ? 
+    let persons = null;
+
+    if (this.state.lathatosag) {
+      persons = (
         <div>
           <Person 
             name={this.state.persons[0].name} 
@@ -77,8 +75,18 @@ class App extends Component {
           >
               Hobbim az informatika!
           </Person>
-        </div> : null
-        }
+        </div>
+      );
+    }
+
+    return (
+      <div className="App">
+        <h1>Sziasztok!</h1>
+        <p>Bekezdés</p>
+        <button style={stilus} onClick={this.kapcsolo}>Kapcsoló</button>
+        
+        {persons}
+
       </div>
     );
     
