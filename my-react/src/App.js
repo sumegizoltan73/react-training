@@ -8,9 +8,9 @@ import person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      { name: 'Hűbele Balázs', age: 26 },
-      { name: 'János', age: 58 },
-      { name: 'Kocka Karesz', age: 20 }
+      { id: 'kjhjk', name: 'Hűbele Balázs', age: 26 },
+      { id: 'asdads', name: 'János', age: 58 },
+      { id: 'lkjlkj', name: 'Kocka Karesz', age: 20 }
     ],
     masikState: 'másik state',
     lathatosag: true
@@ -67,7 +67,12 @@ class App extends Component {
           {
             this.state.persons.map((person, index) => {
               return(
-                <Person name={person.name} age={person.age} delete={() => this.personDeleteHandler(index)} />
+                <Person
+                  key={person.id} 
+                  name={person.name} 
+                  age={person.age} 
+                  delete={() => this.personDeleteHandler(index)} 
+                />
               )
             })
           }
