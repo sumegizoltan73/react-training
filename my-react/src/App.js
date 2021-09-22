@@ -11,7 +11,8 @@ class App extends Component {
       { name: 'János', age: 58 },
       { name: 'Kocka Karesz', age: 20 }
     ],
-    masikState: 'másik state'
+    masikState: 'másik state',
+    lathatosag: true
   }
 
   nameChangeHandler = (ujNev) => {
@@ -36,6 +37,11 @@ class App extends Component {
     });
   }
 
+  kapcsolo = () => {
+    const lathato = this.state.lathatosag;
+    this.setState({ lathatosag: !lathato });
+  }
+
   render() {
     const stilus = {
       backgroundColor: '#efefef',
@@ -49,26 +55,30 @@ class App extends Component {
       <div className="App">
         <h1>Sziasztok!</h1>
         <p>Bekezdés</p>
-        <button style={stilus} onClick={this.nameChangeHandler.bind(this, 'Teszt')}>Nevet módosít</button>
-        <Person 
-          name={this.state.persons[0].name} 
-          age={this.state.persons[0].age}
-          click={this.nameChangeHandler.bind(this, 'Hübele Bazsi')}
-          change={this.nevValtozasKezelo}
-        />
-        <Person 
-          name={this.state.persons[1].name} 
-          age={this.state.persons[1].age}
-          click={(event) => this.nameChangeHandler('Csak Balázs')}
-          change={this.nevValtozasKezelo}
-        />
-        <Person 
-          name={this.state.persons[2].name} 
-          age={this.state.persons[2].age}
-          change={this.nevValtozasKezelo}
-        >
-            Hobbim az informatika!
-        </Person>
+        <button style={stilus} onClick={this.kapcsolo}>Kapcsoló</button>
+        { this.state.lathatosag ? 
+        <div>
+          <Person 
+            name={this.state.persons[0].name} 
+            age={this.state.persons[0].age}
+            click={this.nameChangeHandler.bind(this, 'Hübele Bazsi')}
+            change={this.nevValtozasKezelo}
+          />
+          <Person 
+            name={this.state.persons[1].name} 
+            age={this.state.persons[1].age}
+            click={(event) => this.nameChangeHandler('Csak Balázs')}
+            change={this.nevValtozasKezelo}
+          />
+          <Person 
+            name={this.state.persons[2].name} 
+            age={this.state.persons[2].age}
+            change={this.nevValtozasKezelo}
+          >
+              Hobbim az informatika!
+          </Person>
+        </div> : null
+        }
       </div>
     );
     
