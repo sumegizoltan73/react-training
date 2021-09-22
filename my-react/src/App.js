@@ -81,9 +81,19 @@ class App extends Component {
       stilus.backgroundColor = 'red';
     }
 
+    let classes = [];
+
+    if (this.state.persons.length === 3) {
+      classes.push('red');
+      classes.push('bold');
+    }
+    else {
+      classes = [];
+    }
+
     return (
       <div className="App">
-        <h1>Sziasztok!</h1>
+        <h1 className={classes.join(' ')}>Sziasztok!</h1>
         <p>Bekezdés</p>
         <button style={stilus} onClick={this.kapcsolo}>Kapcsoló</button>
         
