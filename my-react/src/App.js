@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 //import React, {useState} from 'react';
 import Person from './Person/Person'; 
 import Awesome from './Awesome/Awesome';
+import ComponentC from './components/ComponentC';
 import './App.css';
 
+export const UserContext = React.createContext();
+export const ChannelContext = React.createContext();
 
 class App extends Component {
   state = {
@@ -101,6 +104,12 @@ class App extends Component {
         {persons}
 
         <Awesome init="1"/>
+
+        <UserContext.Provider value={'Vishwas'}>
+          <ChannelContext.Provider value={'Codevolution'}>
+            <ComponentC />
+          </ChannelContext.Provider>
+        </UserContext.Provider>
       </div>
     );
     
