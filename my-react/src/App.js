@@ -5,6 +5,9 @@ import Awesome from './Awesome/Awesome';
 import ComponentC from './components/ComponentC';
 import ParentComponent from './components/ParentComponent';
 import Counter from './components/Counter';
+import FocusInput from './components/FocusInput';
+import ClassTimer from './components/ClassTimer';
+import HookTimer from './components/HookTimer';
 import './App.css';
 
 export const UserContext = React.createContext();
@@ -116,6 +119,11 @@ class App extends Component {
         <ParentComponent />
 
         <Counter />
+
+        <h2>useRef hook</h2>
+        <FocusInput />
+			  <ClassTimer />
+			  <HookTimer />
       </div>
     );
     
