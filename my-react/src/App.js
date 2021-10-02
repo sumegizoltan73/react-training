@@ -4,6 +4,7 @@ import Person from './Person/Person';
 import Awesome from './Awesome/Awesome';
 import ComponentC from './components/ComponentC';
 import ParentComponent from './components/ParentComponent';
+import Counter from './components/Counter';
 import './App.css';
 
 export const UserContext = React.createContext();
@@ -113,6 +114,8 @@ class App extends Component {
         </UserContext.Provider>
 
         <ParentComponent />
+
+        <Counter />
       </div>
     );
     
