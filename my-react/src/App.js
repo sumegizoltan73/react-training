@@ -8,6 +8,11 @@ import Counter from './components/Counter';
 import FocusInput from './components/FocusInput';
 import ClassTimer from './components/ClassTimer';
 import HookTimer from './components/HookTimer';
+import DocTitleOne from './components/DocTitleOne';
+import DocTitleTwo from './components/DocTitleTwo';
+import CounterOne from './components/CounterOne';
+import CounterTwo from './components/CounterTwo';
+import UserForm from './components/UserForm';
 import './App.css';
 
 export const UserContext = React.createContext();
@@ -124,6 +129,19 @@ class App extends Component {
         <FocusInput />
 			  <ClassTimer />
 			  <HookTimer />
+
+        <h2>customs hooks</h2>
+        <h3>useDocumentTitle hook</h3>
+        <DocTitleOne />
+        <DocTitleTwo />
+
+        <h3>useCounter hook</h3>
+        <CounterOne />
+        <CounterTwo />
+
+        <h3>useInput hook</h3>
+        <UserForm />
+        
       </div>
     );
     
