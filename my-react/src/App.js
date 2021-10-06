@@ -1,19 +1,19 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 //import React, {useState} from 'react';
-import Person from './Person/Person'; 
-import Awesome from './Awesome/Awesome';
-import ComponentC from './components/ComponentC';
-import ParentComponent from './components/ParentComponent';
-import Counter from './components/Counter';
-import FocusInput from './components/FocusInput';
-import ClassTimer from './components/ClassTimer';
-import HookTimer from './components/HookTimer';
-import DocTitleOne from './components/DocTitleOne';
-import DocTitleTwo from './components/DocTitleTwo';
-import CounterOne from './components/CounterOne';
-import CounterTwo from './components/CounterTwo';
-import UserForm from './components/UserForm';
-import './App.css';
+import Person from "./Person/Person";
+import Awesome from "./Awesome/Awesome";
+import ComponentC from "./components/ComponentC";
+import ParentComponent from "./components/ParentComponent";
+import Counter from "./components/Counter";
+import FocusInput from "./components/FocusInput";
+import ClassTimer from "./components/ClassTimer";
+import HookTimer from "./components/HookTimer";
+import DocTitleOne from "./components/DocTitleOne";
+import DocTitleTwo from "./components/DocTitleTwo";
+import CounterOne from "./components/CounterOne";
+import CounterTwo from "./components/CounterTwo";
+import UserForm from "./components/UserForm";
+import "./App.css";
 
 export const UserContext = React.createContext();
 export const ChannelContext = React.createContext();
@@ -21,102 +21,100 @@ export const ChannelContext = React.createContext();
 class App extends Component {
   state = {
     persons: [
-      { id: 'kjhjk', name: 'Hűbele Balázs', age: 26 },
-      { id: 'asdads', name: 'János', age: 58 },
-      { id: 'lkjlkj', name: 'Kocka Karesz', age: 20 }
+      { id: "kjhjk", name: "Hűbele Balázs", age: 26 },
+      { id: "asdads", name: "János", age: 58 },
+      { id: "lkjlkj", name: "Kocka Karesz", age: 20 },
     ],
-    masikState: 'másik state',
-    lathatosag: true
-  }
+    masikState: "másik state",
+    lathatosag: true,
+  };
 
   nevValtozasKezelo = (event, id) => {
-    const szemelyIndex = this.state.persons.findIndex(aktSzemely => {
+    const szemelyIndex = this.state.persons.findIndex((aktSzemely) => {
       return aktSzemely.id === id;
     });
     const szemely = {
-      ...this.state.persons[szemelyIndex]
+      ...this.state.persons[szemelyIndex],
     };
 
     // ES5: const szemely = Object.assign({}, this.state.persons[szemelyIndex]);
-    
+
     szemely.name = event.target.value;
     const szemelyek = [...this.state.persons];
     szemelyek[szemelyIndex] = szemely;
 
     this.setState({
-      persons: szemelyek
+      persons: szemelyek,
     });
-  }
+  };
 
   kapcsolo = () => {
     const lathato = this.state.lathatosag;
     this.setState({ lathatosag: !lathato });
-  }
+  };
 
   personDeleteHandler = (personIndex) => {
     // ES5: const szemelyek = this.state.persons.slice();
     const szemelyek = [...this.state.persons];
     szemelyek.splice(personIndex, 1);
-    this.setState({persons: szemelyek});
-  }
+    this.setState({ persons: szemelyek });
+  };
 
   render() {
     const stilus = {
-      backgroundColor: 'green',
-      font: 'inherit',
-      border: '2px solid gray',
-      padding: '8px',
-      cursor: 'pointer',
-      color: 'white'
+      backgroundColor: "green",
+      font: "inherit",
+      border: "2px solid gray",
+      padding: "8px",
+      cursor: "pointer",
+      color: "white",
     };
-    
+
     let persons = null;
 
     if (this.state.lathatosag) {
       persons = (
         <div>
-          {
-            this.state.persons.map((person, index) => {
-              return(
-                <Person
-                  key={person.id} 
-                  name={person.name} 
-                  age={person.age} 
-                  delete={() => this.personDeleteHandler(index)} 
-                  change={(event) => this.nevValtozasKezelo(event, person.id)}
-                />
-              )
-            })
-          }
-          
+          {this.state.persons.map((person, index) => {
+            return (
+              <Person
+                key={person.id}
+                name={person.name}
+                age={person.age}
+                delete={() => this.personDeleteHandler(index)}
+                change={(event) => this.nevValtozasKezelo(event, person.id)}
+              />
+            );
+          })}
         </div>
       );
 
-      stilus.backgroundColor = 'red';
+      stilus.backgroundColor = "red";
     }
 
     let classes = [];
 
     if (this.state.persons.length === 3) {
-      classes.push('red');
-      classes.push('bold');
-    }
-    else {
+      classes.push("red");
+      classes.push("bold");
+    } else {
       classes = [];
     }
 
     return (
       <div className="App">
-        <h1 className={classes.join(' ')}>Sziasztok!</h1>
+        <h1 className={classes.join(" ")}>Sziasztok!</h1>
         <p>Bekezdés</p>
-        <button style={stilus} onClick={this.kapcsolo}>Kapcsoló</button>
-        
+        <button style={stilus} onClick={this.kapcsolo}>
+          Kapcsoló
+        </button>
+
         {persons}
 
-        <Awesome init="1"/>
+        <Awesome init="1" />
 
-        <UserContext.Provider value={'Vishwas'}>
-          <ChannelContext.Provider value={'Codevolution'}>
+        <UserContext.Provider value={"Vishwas"}>
+          <ChannelContext.Provider value={"Codevolution"}>
             <ComponentC />
           </ChannelContext.Provider>
         </UserContext.Provider>
@@ -127,8 +125,8 @@ class App extends Component {
 
         <h2>useRef hook</h2>
         <FocusInput />
-			  <ClassTimer />
-			  <HookTimer />
+        <ClassTimer />
+        <HookTimer />
 
         <h2>customs hooks</h2>
         <h3>useDocumentTitle hook</h3>
@@ -141,12 +139,11 @@ class App extends Component {
 
         <h3>useInput hook</h3>
         <UserForm />
-        
       </div>
     );
-    
+
     //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Sziasztok!'));
-  } 
+  }
 }
 
 export default App;
@@ -187,4 +184,3 @@ const App = props => {
 
 export default App;
 */
-
