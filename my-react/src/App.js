@@ -17,6 +17,7 @@ import "./App.css";
 
 export const UserContext = React.createContext();
 export const ChannelContext = React.createContext();
+export const CustomContext = React.createContext();
 
 class App extends Component {
   state = {
@@ -27,6 +28,11 @@ class App extends Component {
     ],
     masikState: "másik state",
     lathatosag: true,
+  };
+
+  customValue = {
+    id: 12,
+    name: 'jhfjhg'
   };
 
   nevValtozasKezelo = (event, id) => {
@@ -115,7 +121,9 @@ class App extends Component {
 
         <UserContext.Provider value={"Vishwas"}>
           <ChannelContext.Provider value={"Codevolution"}>
-            <ComponentC />
+            <CustomContext.Provider value={this.customValue}>
+              <ComponentC />
+            </CustomContext.Provider>
           </ChannelContext.Provider>
         </UserContext.Provider>
 
